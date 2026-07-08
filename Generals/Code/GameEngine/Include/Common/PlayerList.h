@@ -113,10 +113,6 @@ public:
 	*/
 	Player *findPlayerWithNameKey(NameKeyType key);
 
-	void setSlotIndex(Int playerIndex, Byte slotIndex);
-	Byte getSlotIndex(Int playerIndex) const;
-	void resolveSlotIndices();
-
 	/**
 		Return the "local" player (ie, the human playing the game).
 		This will never return null.
@@ -154,6 +150,8 @@ public:
 	*/
 	PlayerMaskType getPlayersWithRelationship( Int srcPlayerIndex, UnsignedInt allowedRelationships );
 
+	Int getSlotIndex(Int playerIndex) const;
+
 protected:
 
 	// snapshot methods
@@ -162,11 +160,13 @@ protected:
 	virtual void loadPostProcess() override;
 
 private:
+	void resolveSlotIndices();
+	void setSlotIndex(Int playerIndex, Int slotIndex);
 
 	Player				*m_local;
 	Int						m_playerCount;
 	Player				*m_players[MAX_PLAYER_COUNT];
-	Byte					m_slotIndices[MAX_PLAYER_COUNT];
+	Int						m_slotIndices[MAX_PLAYER_COUNT];
 
 };
 

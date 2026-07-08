@@ -2675,7 +2675,6 @@ void GameLogic::processCommandList( CommandList *list )
 					if (slotIndex >= 0 && !TheNetwork->isPlayerConnected(slotIndex))
 						continue;
 
-
 					const UnsignedInt crc = it->second;
 
 					if (!hasReferenceCRC)
